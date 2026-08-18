@@ -67,8 +67,8 @@ export default function Sidebar({ navigation }: SidebarProps) {
                     Demo-Prozess: Softwarezugang
                 </p>
                 <p className="mt-1 text-sm leading-6 text-slate-600">
-                    Beispielprozess fuer Antraege, Freigaben, Aufgaben und
-                    nachvollziehbare Aktivitaeten.
+                    Beispielprozess für Anträge, Freigaben, Aufgaben und
+                    nachvollziehbare Aktivitäten.
                 </p>
             </div>
         </aside>

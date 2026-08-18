@@ -1,58 +1,261 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# FlowDesk
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+FlowDesk ist ein oeffentliches Portfolio-Projekt fuer eine moderne Plattform zur Digitalisierung interner Unternehmensprozesse. Das Projekt zeigt Full-Stack-Entwicklung mit Laravel, React, Inertia.js, TypeScript und Tailwind CSS in einem modular aufgebauten Laravel-Monolithen.
 
-## About Laravel
+Ziel ist nicht, ein einzelnes Fachsystem nachzubauen. FlowDesk bildet wiederkehrende Unternehmensprozesse generisch als digitale Workflows ab, zum Beispiel Softwarezugangs-Antraege, Dokumentenfreigaben, Beschaffungsprozesse, Onboarding-Ablaeufe oder interne Aenderungsantraege.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Projektstatus
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+FlowDesk befindet sich in einer fruehen Aufbauphase.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Aktuell vorhanden:
 
-## Learning Laravel
+- Laravel-Anwendung mit Authentifizierung ueber Breeze
+- React/Inertia/TypeScript-Frontend
+- deutsches AppShell-Grundlayout mit Sidebar und Topbar
+- statisches Dashboard mit Demo-Kennzahlen und Prozessvorschau
+- lokale Entwicklung mit SQLite moeglich
+- GitHub-Repository und SSH-Remote eingerichtet
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Noch nicht vorhanden:
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- echte Prozess-, Aufgaben- oder Freigabelogik
+- Organisations- und Rollenmodell
+- PostgreSQL-/Docker-Setup
+- CI/CD
+- fachliche Backend-Module
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Produktidee
 
-## Agentic Development
+FlowDesk soll Unternehmen dabei unterstuetzen, interne Prozesse transparent und nachvollziehbar zu steuern.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Typische Prozesse koennen spaeter sein:
+
+- Softwarezugang beantragen
+- Dokumente freigeben
+- Arbeitsmittel beschaffen
+- interne Aenderungsantraege stellen
+- Onboarding-Prozesse durchfuehren
+- Aufgaben und Freigaben verwalten
+
+Ein Prozess kann perspektivisch aus mehreren Schritten bestehen:
+
+1. Formular ausfuellen
+2. Freigabe durch verantwortliche Person
+3. Bearbeitung durch zustaendige Abteilung
+4. Abschluss oder Bestaetigung
+
+## Demo-Prozess
+
+Der zentrale Demo-Prozess ist ein Antrag fuer einen Softwarezugang.
+
+Ablauf:
+
+1. Ein Mitarbeitender beantragt eine Software.
+2. Software, Begruendung, benoetigtes Datum und Kostenstelle werden erfasst.
+3. Eine Fuehrungskraft genehmigt oder lehnt den Antrag ab.
+4. Die IT erhaelt eine Aufgabe zur Einrichtung.
+5. Der Mitarbeitende bestaetigt, dass der Zugang funktioniert.
+6. Alle Aktionen werden im Aktivitaetsverlauf dokumentiert.
+
+## Tech-Stack
+
+Backend:
+
+- PHP 8.3+
+- Laravel 13
+- Laravel Sanctum
+- Laravel Queues, Scheduler und Notifications geplant
+- PostgreSQL geplant
+- Pest oder PHPUnit fuer Tests
+- Laravel Pint fuer Code Style
+- Larastan/PHPStan geplant
+
+Frontend:
+
+- React 18
+- Inertia.js 2
+- TypeScript
+- Tailwind CSS
+- wiederverwendbare UI-Komponenten
+
+Infrastruktur geplant:
+
+- Docker Compose
+- PostgreSQL
+- Redis
+- Mailpit
+- GitHub Actions
+- optional MinIO fuer Dokumentenuploads
+
+## Architekturziele
+
+FlowDesk wird als modularer Laravel-Monolith aufgebaut.
+
+Wichtige Prinzipien:
+
+- keine Geschaeftslogik vollstaendig in Controllern
+- Form Requests fuer Validierung
+- Policies fuer Zugriffskontrolle
+- Actions oder Services fuer Anwendungsfaelle
+- Events und Listener fuer Seiteneffekte
+- Jobs fuer asynchrone Verarbeitung
+- Enums fuer Statuswerte
+- Datenbanktransaktionen bei fachlich zusammenhaengenden Aenderungen
+- klare fachliche Module
+- Mandantenfaehigkeit ueber `organization_id`
+
+Geplante Module:
+
+- Identity
+- Organizations
+- Processes
+- Tasks
+- Approvals
+- Documents
+- Notifications
+- Audit
+
+## Geplante Kerndatenmodelle
+
+- Organization
+- User
+- Team
+- Role
+- Permission
+- ProcessTemplate
+- ProcessTemplateVersion
+- ProcessStepTemplate
+- ProcessInstance
+- ProcessStep
+- Task
+- Approval
+- Comment
+- Document
+- ActivityLog
+- Notification
+
+Prozessvorlagen und konkrete Prozessinstanzen werden getrennt behandelt. Veroeffentlichte Prozessvorlagen sollen versioniert werden, damit laufende Prozesse nicht durch spaetere Aenderungen an Vorlagen veraendert werden.
+
+## Rollenmodell
+
+Geplante Rollen:
+
+| Rolle | Verantwortung |
+| --- | --- |
+| Administrator | Organisation, Benutzer, Rollen und Prozessvorlagen verwalten |
+| Process Manager | Prozesse starten, verwalten und auswerten |
+| Approver | Zugewiesene Freigaben bearbeiten |
+| Employee | Eigene Prozesse starten, Aufgaben bearbeiten und eigene Prozesse einsehen |
+
+Rollen und Permissions sollen spaeter mit `spatie/laravel-permission` umgesetzt werden. Policies bleiben trotzdem zentral fuer fachliche Zugriffskontrolle.
+
+## MVP-Fokus
+
+Der MVP konzentriert sich auf nachvollziehbare interne Workflows statt auf maximale Funktionsbreite.
+
+Geplante MVP-Funktionen:
+
+- Authentifizierung
+- Organisationsverwaltung
+- Benutzerverwaltung und Einladungen
+- Rollen und Berechtigungen
+- Prozessvorlagen erstellen
+- Prozessschritte definieren
+- Prozessvorlagen veroeffentlichen
+- Prozesse starten
+- Aufgaben bearbeiten
+- Freigaben genehmigen oder ablehnen
+- Kommentare hinterlassen
+- Aktivitaetsverlauf anzeigen
+- Benachrichtigungen vorbereiten
+- Dashboard mit offenen Aufgaben und aktiven Prozessen
+- Demo-Daten und Demo-Zugang
+
+## Entwicklungsroadmap
+
+Die detaillierte Roadmap liegt unter [`docs/roadmap.md`](docs/roadmap.md).
+
+Kurzuebersicht:
+
+| Phase | Ziel |
+| --- | --- |
+| Phase 1 | Projektfundament, Layout, Dokumentation und Codequalitaet |
+| Phase 2 | Organisationen, Benutzer und Rollen |
+| Phase 3 | Prozessvorlagen und Versionierung |
+| Phase 4 | Prozessinstanzen, Schritte und Aufgaben |
+| Phase 5 | Freigaben, Kommentare und Aktivitaetsverlauf |
+| Phase 6 | Benachrichtigungen, Dokumente und Suche |
+| Phase 7 | Reporting, Demo-Daten und Portfolio-Polish |
+
+## Lokale Entwicklung
+
+Voraussetzungen:
+
+- PHP 8.3+
+- Composer
+- Node.js 22 LTS
+- npm
+- SQLite fuer lokale Entwicklung
+
+Installation:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Entwicklungsserver starten:
 
-## Contributing
+```bash
+php artisan serve
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+In einem zweiten Terminal:
 
-## Code of Conduct
+```bash
+npm run dev
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Anwendung oeffnen:
 
-## Security Vulnerabilities
+```text
+http://127.0.0.1:8000
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Build erstellen:
 
-## License
+```bash
+npm run build
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Tests ausfuehren:
+
+```bash
+php artisan test
+```
+
+## Qualitaetsziele
+
+FlowDesk soll nicht nur funktional, sondern auch als professionelles Codebeispiel nachvollziehbar sein.
+
+Geplante Qualitaetsmassnahmen:
+
+- Feature- und Unit-Tests fuer zentrale Geschaeftslogik
+- zentrale Statusuebergaenge mit Tests
+- Laravel Pint fuer Formatierung
+- PHPStan/Larastan fuer statische Analyse
+- TypeScript strict mode
+- GitHub Actions fuer CI
+- klare Architekturentscheidungen in `docs/adr`
+
+## Portfolio-Hinweis
+
+Dieses Projekt dient als oeffentliches Portfolio-Projekt. Fachliche Konzepte sind bewusst abstrahiert und generisch modelliert. Es enthaelt keine privaten Daten, keine internen Unternehmensprozesse und keinen nicht-oeffentlichen Code aus anderen Projekten.
+
+## Lizenz
+
+Dieses Projekt ist unter der MIT-Lizenz geplant.

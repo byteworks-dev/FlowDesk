@@ -12,7 +12,7 @@ const metrics = [
     {
         label: 'Aktive Prozesse',
         value: '4',
-        change: '2 warten auf Uebergabe an eine Abteilung',
+        change: '2 warten auf Übergabe an eine Abteilung',
         tone: 'violet' as const,
     },
     {
@@ -30,27 +30,27 @@ const metrics = [
 ];
 
 const activities = [
-    'Softwarezugang wurde durch die Fuehrungskraft freigegeben',
-    'IT-Aufgabe fuer die Einrichtung des Figma-Zugangs zugewiesen',
-    'Dokumentenfreigabe als Version 1 veroeffentlicht',
-    'Neuer Onboarding-Antrag fuer das Produktteam erstellt',
+    'Softwarezugang wurde durch die Führungskraft freigegeben',
+    'IT-Aufgabe für die Einrichtung des Figma-Zugangs zugewiesen',
+    'Dokumentenfreigabe als Version 1 veröffentlicht',
+    'Neuer Onboarding-Antrag für das Produktteam erstellt',
 ];
 
 const openTasks = [
     {
-        title: 'Softwarezugang pruefen',
-        owner: 'Freigabe durch Fuehrungskraft',
-        due: 'Heute faellig',
+        title: 'Softwarezugang prüfen',
+        owner: 'Freigabe durch Führungskraft',
+        due: 'Heute fällig',
     },
     {
-        title: 'Beschaffungsdetails fuer Laptop vorbereiten',
+        title: 'Beschaffungsdetails für Laptop vorbereiten',
         owner: 'Office Operations',
-        due: 'Morgen faellig',
+        due: 'Morgen fällig',
     },
     {
-        title: 'Funktion des neuen SaaS-Zugangs bestaetigen',
-        owner: 'Bestaetigung durch Mitarbeitenden',
-        due: 'Faellig am 22. Aug.',
+        title: 'Funktion des neuen SaaS-Zugangs bestätigen',
+        owner: 'Bestätigung durch Mitarbeitenden',
+        due: 'Fällig am 22. Aug.',
     },
 ];
 
@@ -88,10 +88,10 @@ export default function Dashboard() {
                                 Workflow-Zentrale
                             </span>
                             <h1 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                                Interne Antraege, Freigaben und Aufgaben in einem fokussierten Arbeitsbereich steuern.
+                                Interne Anträge, Freigaben und Aufgaben in einem fokussierten Arbeitsbereich steuern.
                             </h1>
                             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-                                FlowDesk hilft Teams dabei, wiederkehrende Unternehmensprozesse als transparente digitale Workflows mit klaren Zustaendigkeiten und nachvollziehbarem Aktivitaetsverlauf abzubilden.
+                                FlowDesk hilft Teams dabei, wiederkehrende Unternehmensprozesse als transparente digitale Workflows mit klaren Zuständigkeiten und nachvollziehbarem Aktivitätsverlauf abzubilden.
                             </p>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ export default function Dashboard() {
                         <div className="flex items-center justify-between gap-4">
                             <div>
                                 <h2 className="text-lg font-semibold text-slate-950">
-                                    Letzte Aktivitaeten
+                                    Letzte Aktivitäten
                                 </h2>
                                 <p className="mt-1 text-sm text-slate-500">
                                     Aktuelle Ereignisse aus dem Demo-Arbeitsbereich.
@@ -130,7 +130,7 @@ export default function Dashboard() {
                                             {activity}
                                         </p>
                                         <p className="mt-1 text-xs text-slate-500">
-                                            Demo-Ereignis fuer die Portfolio-Oberflaeche
+                                            Demo-Ereignis für die Portfolio-Oberfläche
                                         </p>
                                     </div>
                                 </div>
