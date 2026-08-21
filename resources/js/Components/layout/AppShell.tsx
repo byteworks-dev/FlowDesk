@@ -14,7 +14,12 @@ const navigation = [
         active: route().current('dashboard'),
         icon: 'dashboard',
     },
-    { name: 'Prozesse', href: '#', icon: 'processes' },
+    {
+        name: 'Prozesse',
+        href: route('processes.index'),
+        active: route().current('processes.*'),
+        icon: 'processes',
+    },
     { name: 'Aufgaben', href: '#', icon: 'tasks' },
     { name: 'Freigaben', href: '#', icon: 'approvals' },
     { name: 'Dokumente', href: '#', icon: 'documents' },

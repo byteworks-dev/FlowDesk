@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProcessTemplate;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -98,6 +99,61 @@ class DatabaseSeeder extends Seeder
                     ...$user,
                     'password' => Hash::make('password'),
                 ],
+            );
+        }
+
+        $processTemplates = [
+            [
+                'name' => 'Antrag auf Softwarezugang',
+                'category' => 'IT Services',
+                'status' => 'published',
+                'step_count' => 5,
+                'description' => 'Standardprozess fuer neue Softwarezugriffe mit Freigabe durch Fuehrungskraft und Einrichtung durch die IT.',
+                'owner_team' => 'IT',
+                'published_at' => '2026-08-01 09:00:00',
+            ],
+            [
+                'name' => 'Dokumentenfreigabe',
+                'category' => 'Compliance',
+                'status' => 'published',
+                'step_count' => 4,
+                'description' => 'Mehrstufige Pruefung und Freigabe interner Dokumente vor der Veroeffentlichung.',
+                'owner_team' => 'Legal',
+                'published_at' => '2026-08-04 10:30:00',
+            ],
+            [
+                'name' => 'Arbeitsmittelbeschaffung',
+                'category' => 'Operations',
+                'status' => 'draft',
+                'step_count' => 6,
+                'description' => 'Beschaffung von Hardware, Zubehoer oder weiteren Arbeitsmitteln mit Budgetpruefung.',
+                'owner_team' => 'Operations',
+                'published_at' => null,
+            ],
+            [
+                'name' => 'Onboarding neuer Mitarbeitender',
+                'category' => 'HR',
+                'status' => 'published',
+                'step_count' => 7,
+                'description' => 'Koordinierter Onboarding-Prozess fuer HR, IT, Fachbereich und neue Mitarbeitende.',
+                'owner_team' => 'HR',
+                'published_at' => '2026-08-07 08:45:00',
+            ],
+            [
+                'name' => 'Interner Aenderungsantrag',
+                'category' => 'Administration',
+                'status' => 'archived',
+                'step_count' => 3,
+                'description' => 'Aeltere Vorlage fuer interne Aenderungsantraege, ersetzt durch kommende Prozessversion.',
+                'owner_team' => 'Operations',
+                'published_at' => '2026-07-15 14:00:00',
+            ],
+        ];
+
+        foreach ($processTemplates as $processTemplate) {
+            ProcessTemplate::query()->updateOrCreate(
+                ['name' => $processTemplate['name']],
+                $processTemplate,
             );
         }
     }
