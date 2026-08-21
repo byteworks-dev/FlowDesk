@@ -8,12 +8,22 @@ type AppShellProps = PropsWithChildren<{
 }>;
 
 const navigation = [
-    { name: 'Dashboard', href: route('dashboard'), active: route().current('dashboard'), icon: 'dashboard' },
+    {
+        name: 'Dashboard',
+        href: route('dashboard'),
+        active: route().current('dashboard'),
+        icon: 'dashboard',
+    },
     { name: 'Prozesse', href: '#', icon: 'processes' },
     { name: 'Aufgaben', href: '#', icon: 'tasks' },
     { name: 'Freigaben', href: '#', icon: 'approvals' },
     { name: 'Dokumente', href: '#', icon: 'documents' },
-    { name: 'Benutzer', href: '#', icon: 'users' },
+    {
+        name: 'Benutzer',
+        href: route('users.index'),
+        active: route().current('users.*'),
+        icon: 'users',
+    },
     { name: 'Einstellungen', href: '#', icon: 'settings' },
 ];
 
